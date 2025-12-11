@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NARWEL — Narratives & the Sustainable Welfare State</title>
+  <meta name="description" content="NARWEL studies how cultural narratives shape support and polarization around policies for a sustainable welfare state in Spain." />
+  <meta property="og:title" content="NARWEL — Narratives & the Sustainable Welfare State" />
+  <meta property="og:description" content="Mapping narratives, profiling publics, and testing interventions to build support for sustainable welfare policies in Spain." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b0d12; --panel:#10131a; --muted:#9aa5b1; --text:#e6ebf2;
+      --brand:#4f7cff; --brand-2:#7bd3ff; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px; --radius-sm:12px; --maxw:1100px;
+      --ok:#2dd4bf; --warn:#f59e0b;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f7f8fa; --muted:#556070; --text:#0b0d12; --brand:#1f4fff; --brand-2:#3fb4ff; --shadow:0 10px 30px rgba(0,0,0,.08);}
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(79,124,255,.12), transparent),
+                  radial-gradient(1000px 600px at -10% 10%, rgba(123,211,255,.10), transparent), var(--bg);
+      color: var(--text); line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    header.site{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(11,13,18,.75), rgba(11,13,18,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .nav .links{display:flex;flex-wrap:wrap;gap:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-weight:600;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .hero{padding:72px 0 40px}
+    .hero .title{font-size: clamp(28px, 4vw, 54px); line-height:1.15;margin:0 0 12px}
+    .hero p{font-size: clamp(16px, 2.1vw, 20px); color:var(--muted); max-width:900px}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+    .badge{padding:6px 10px;border:1px solid rgba(255,255,255,.14);border-radius:999px;font-size:12px;letter-spacing:.3px;opacity:.9}
+    .grid{display:grid;gap:18px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .section{padding:28px 0}
+    .section h2{font-size: clamp(22px, 3vw, 32px); margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    @media (max-width: 900px){.split{grid-template-columns:1fr}}
+    .list{display:grid;gap:10px}
+    .list li{list-style:none;padding:12px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .list strong{display:block}
+    .wp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .person{display:flex;gap:14px;align-items:flex-start}
+    .avatar, .avatar-img{width:56px;height:56px;border-radius:50%;flex:0 0 auto}
+    .avatar{background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .avatar-img{object-fit:cover}
+    .timeline{position:relative;margin:10px 0;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),transparent)}
+    .milestone{position:relative;margin:0 0 16px}
+    .milestone:before{content:"";position:absolute;left:-18px;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px rgba(79,124,255,.25)}
+    footer{padding:32px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.08);margin-top:30px}
+    .logos{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .logos img{height:30px;opacity:.9;filter:grayscale(100%)}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; padding: 2px 6px; border-radius: 6px; border:1px solid rgba(255,255,255,.2)}
+    .note{border-left:3px solid var(--brand); padding:12px 14px; background:rgba(79,124,255,.08); border-radius: 8px}
+    .center{display:flex;justify-content:center;align-items:center}
+    figcaption{color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>NARWEL</span>
+      </a>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#rq">Research Questions</a>
+        <a href="#wp">Work Packages</a>
+        <a href="#team">Collaborators</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid" style="grid-template-columns: 1.2fr .8fr; align-items:center; gap:26px">
+        <div>
+          <h1 class="title">Understanding How Narratives Shape Support for a Sustainable Welfare State</h1>
+          <p>NARWEL investigates the cultural narratives that shape public support—and polarization—around policies promoting a sustainable welfare state in Spain. We map narratives across citizens, media, and political elites; profile who endorses them; and test narrative-based interventions to build support and reduce polarization.</p>
+          <div class="badges">
+            <span class="badge">2026–2029</span>
+            <span class="badge">Psychology (PSI) · Cultura, creatividad y sociedad inclusiva</span>
+            <span class="badge">Open Science • OSF</span>
+          </div>
+        </div>
+        <div class="card">
+          <strong>At a glance</strong>
+          <ul class="list" style="margin-top:10px">
+            <li><strong>Acronym</strong> NARWEL</li>
+            <li><strong>PIs</strong> Efraín García-Sánchez · Guillermo B. Willis</li>
+            <li><strong>Host</strong> Lab of Social Psychology of Inequality · University of Granada</li>
+            <li><strong>Partner</strong> Newtral (knowledge transfer)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE: Problem Justification -->
+    <section class="section" id="problem-image">
+      <div class="card" style="padding:30px; text-align:center;">
+        <img src="assets/problem-image.jpg" alt="Project context illustration" style="max-width:100%; border-radius:12px;">
+        <figcaption style="margin-top:10px;">Figure 1. <em>Add your caption here</em>.</figcaption>
+        <p class="muted" style="margin-top:14px;">Add a short explanation (2–3 lines) describing why this figure matters.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="split">
+        <div class="card">
+          <h2>About the Project</h2>
+          <p class="muted">Spain faces high political polarization that complicates agreement on urgent challenges such as poverty, inequality, and environmental sustainability. Traditional predictors (ideology, partisanship, sociodemographics) do not fully explain why citizens support or oppose specific policies. NARWEL focuses on <strong>narratives</strong>—culturally shared frames that justify viewpoints and motivate action—to understand and improve support for sustainable welfare policies.</p>
+        </div>
+        <div class="card">
+          <h3>Highlights</h3>
+          <ul class="list">
+            <li><strong>Polarization-aware design</strong> Narrative interventions to foster constructive debate.</li>
+            <li><strong>Mixed methods</strong> Qualitative analysis, NLP/LLMs, surveys, and experiments.</li>
+            <li><strong>Open & FAIR</strong> Pre-registrations, data documentation, and OSF repositories.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY IMAGE -->
+    <section class="section" id="methodology-image">
+      <div class="card" style="padding:30px; text-align:center;">
+        <img src="assets/methodology-image.jpg" alt="Methodological framework" style="max-width:100%; border-radius:12px;">
+        <figcaption style="margin-top:10px;">Figure 2. <em>Add your caption here</em>.</figcaption>
+        <p class="muted" style="margin-top:14px;">Add a short explanation (2–3 lines) highlighting the bottom-up (text/NLP/LLMs) and top-down (surveys/experiments) workflow.</p>
+      </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section id="objectives" class="section">
+      <div class="card">
+        <h2>Objectives</h2>
+        <ol class="list">
+          <li><strong>General:</strong> Understand how cultural narratives shape support for sustainable welfare policies and how they can reduce polarization.</li>
+          <li><strong>O1:</strong> Identify narratives used by citizens, media, and elites about sustainable welfare policies.</li>
+          <li><strong>O2:</strong> Profile endorsers of different narratives using sociodemographic and psychosocial variables.</li>
+          <li><strong>O3:</strong> Evaluate narrative interventions to increase support and reduce polarization.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- RESEARCH QUESTIONS -->
+    <section id="rq" class="section">
+      <div class="card">
+        <h2>Research Questions</h2>
+        <ol class="list">
+          <li><strong>RQ1.</strong> What narratives justify support or opposition to policies for a sustainable welfare state?</li>
+          <li><strong>RQ2.</strong> Which sociodemographic, ideological, and psychological profiles endorse supportive or opposing narratives?</li>
+          <li><strong>RQ3.</strong> Can narrative-based interventions increase support and reduce polarization?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WORK PACKAGES -->
+    <section id="wp" class="section">
+      <h2>Work Packages</h2>
+      <div class="wp">
+        <article class="card item">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <h3 style="margin:0">WP1 • Mapping Narratives</h3>
+            <span class="badge">Year 1–2</span>
+          </div>
+          <p class="muted">Map narratives among citizens (N≈3,000), media (≈20,000 articles), and political elites. Integrate thematic analysis, NLP, LLM-assisted coding, human validation, and narrative network mapping.</p>
+          <ul class="list">
+            <li><strong>Lead:</strong> UGR team</li>
+            <li><strong>Methods:</strong> Qualitative coding, embeddings, LLMs, network analysis</li>
+            <li><strong>Deliverables:</strong> Narrative taxonomy, validation report, preprint</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <h3 style="margin:0">WP2 • Profiling Groups</h3>
+            <span class="badge">Year 1–3</span>
+          </div>
+          <p class="muted">Design a national survey (N≈2,000) to assess narrative endorsement and psychological mechanisms; analyze longitudinal CIS data to understand change over time.</p>
+          <ul class="list">
+            <li><strong>Lead:</strong> UGR team</li>
+            <li><strong>Methods:</strong> Survey design, multilevel longitudinal models</li>
+            <li><strong>Deliverables:</strong> Open dataset, paper on historical trends</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <h3 style="margin:0">WP3 • Narrative Interventions</h3>
+            <span class="badge">Year 2–4</span>
+          </div>
+          <p class="muted">Test adapted U.S. interventions (Aid-for-Agency; Positive-Sum), run a multi-arm experiment with context-relevant narratives, and a conjoint experiment on policy features.</p>
+          <ul class="list">
+            <li><strong>Lead:</strong> UGR team + collaborators</li>
+            <li><strong>Methods:</strong> Survey experiments, multi-arm trials, conjoint designs</li>
+            <li><strong>Deliverables:</strong> 3 papers, policy toolkit, briefs</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section">
+      <div class="card">
+        <h2>Timeline & Milestones</h2>
+        <div class="timeline">
+          <div class="milestone"><strong>M1.</strong> Project start • <span class="muted">Q1 2026</span></div>
+          <div class="milestone"><strong>M2.</strong> Narrative mapping complete (WP1) • <span class="muted">Q4 2026</span></div>
+          <div class="milestone"><strong>M3.</strong> National survey & CIS analysis (WP2) • <span class="muted">Q2 2027</span></div>
+          <div class="milestone"><strong>M4.</strong> Interventions launched (WP3) • <span class="muted">Q4 2027</span></div>
+          <div class="milestone"><strong>M5.</strong> Final outputs & policy briefs • <span class="muted">Q2 2029</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / COLLABORATORS IMAGE -->
+    <section class="section" id="team-photo">
+      <div class="card" style="padding:30px; text-align:center;">
+        <img src="assets/team-photo.jpg" alt="Research team" style="max-width:100%; border-radius:12px;">
+        <figcaption style="margin-top:10px;">NARWEL Research Team (add your caption here).</figcaption>
+        <p class="muted" style="margin-top:14px;">Brief description of the team photo or collaboration setting.</p>
+      </div>
+    </section>
+
+    <!-- TEAM / COLLABORATORS -->
+    <section id="team" class="section">
+      <h2>Team & Collaborators</h2>
+      <div class="team">
+        <!-- PI 1 -->
+        <div class="card person">
+          <img src="assets/efrain-garcia.jpg" alt="Efraín García-Sánchez" class="avatar-img">
+          <div>
+            <h4>PI • Efraín García-Sánchez</h4>
+            <p class="muted">University of Granada · Social Psychology of Inequality Lab · Cultural change & narrative interventions.</p>
+            <p><a href="#" aria-label="Website">Website</a> · <a href="#" aria-label="Google Scholar">Google Scholar</a></p>
+          </div>
+        </div>
+        <!-- PI 2 -->
+        <div class="card person">
+          <img src="assets/guillermo-willis.jpg" alt="Guillermo B. Willis" class="avatar-img">
+          <div>
+            <h4>PI • Guillermo B. Willis</h4>
+            <p class="muted">University of Granada · Experimental social psychology · Inequality & voluntary simplicity.</p>
+            <p><a href="#" aria-label="Website">Website</a> · <a href="#" aria-label="Google Scholar">Google Scholar</a></p>
+          </div>
+        </div>
+        <!-- Team (UGR) -->
+        <div class="card person">
+          <img src="assets/luis-mundi.jpg" alt="Luis Mundi López" class="avatar-img">
+          <div>
+            <h4>Researcher • Luis Mundi López</h4>
+            <p class="muted">UGR · Voluntary consumption & system justification.</p>
+          </div>
+        </div>
+        <div class="card person">
+          <img src="assets/monica-agudelo.jpg" alt="Mónica Agudelo Osorio" class="avatar-img">
+          <div>
+            <h4>Researcher • Mónica Agudelo Osorio</h4>
+            <p class="muted">UGR · Sustainable & minimalist consumption practices.</p>
+          </div>
+        </div>
+        <div class="card person">
+          <img src="assets/giannis-lois.jpg" alt="Giannis Lois" class="avatar-img">
+          <div>
+            <h4>Postdoc • Giannis Lois</h4>
+            <p class="muted">CIMCYC · Interventions & misinformation (behavioral economics / cognitive sciences).</p>
+          </div>
+        </div>
+        <!-- International Collaborators (examples; add more as needed) -->
+        <div class="card person">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <h4>Collaborator • Hazel Rose Markus</h4>
+            <p class="muted">Stanford SPARQ · Cultural psychology & culture change.</p>
+          </div>
+        </div>
+        <div class="card person">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <h4>Collaborator • Sara Constantino</h4>
+            <p class="muted">Stanford Doerr School · Public opinion on inequality & sustainability.</p>
+          </div>
+        </div>
+        <div class="card person">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <h4>Collaborator • Jennifer Sheehy-Skeffington</h4>
+            <p class="muted">NYU Abu Dhabi · Psychology in Political & Economic Systems.</p>
+          </div>
+        </div>
+        <!-- Add further collaborators with photos/links as you wish -->
+      </div>
+    </section>
+
+    <!-- OUTPUTS -->
+    <section id="outputs" class="section">
+      <div class="split">
+        <div class="card">
+          <h2>Expected Outputs</h2>
+          <ul class="list">
+            <li><strong>6 journal articles</strong> (e.g., NHB, PNAS, PSPB, BJSP, JESP, Political Psychology).</li>
+            <li><strong>Open datasets & materials</strong> following FAIR principles.</li>
+            <li><strong>Policy briefs</strong> for practitioners and decision-makers.</li>
+            <li><strong>Methodology & applied toolkits</strong> for narrative interventions.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Latest</h3>
+          <p class="muted">Add news manually, or link to a blog/OSF. You can also link PDFs placed in <span class="kbd">/assets/</span>, e.g., <a href="assets/policy-brief.pdf">policy-brief.pdf</a>.</p>
+          <div class="note">Project repository (OSF): <a href="https://osf.io/" target="_blank" rel="noopener">Add link</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="card">
+        <h2>Contact</h2>
+        <ul class="list">
+          <li><strong>Email:</strong> your.email@ugr.es</li>
+          <li><strong>Address:</strong> Department of Social Psychology · University of Granada · Granada, Spain</li>
+          <li><strong>Social:</strong> <a href="#">X/Twitter</a> · <a href="#">Bluesky</a> · <a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid" style="grid-template-columns:1fr auto; align-items:center">
+        <div>
+          <div>© <span id="year"></span> NARWEL. Built with ❤ and hosted on GitHub Pages.</div>
+          <div class="muted" style="font-size:14px;margin-top:6px">This site shares research supported by the Agencia Estatal de Investigación (Spain). Views expressed are those of the authors.</div>
+        </div>
+        <div class="logos">
+          <!-- Replace with partner logos (PNG/SVG) in /assets/ -->
+          <img src="/assets/logo-ugr.png" alt="University of Granada" />
+          <img src="/assets/logo-aei.png" alt="AEI" />
+          <img src="/assets/logo-partner.png" alt="Partner" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href').slice(1);
+        const el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
